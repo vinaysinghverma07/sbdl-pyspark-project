@@ -1,0 +1,5 @@
+# Default ignored files, is being created for not pushing the things to git
+
+/workspace.xml
+.idea/*
+lib/__pycache__/*
