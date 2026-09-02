@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                // This will now execute perfectly since pipenv is installed
-               sh 'pipenv --python python3 sync'
+               // sh 'pipenv --python python3 sync'
+				sh 'pipenv --python /usr/local/bin/python3.12 install'
             }
         }
         stage('Test') {
