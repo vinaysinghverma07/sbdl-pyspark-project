@@ -40,12 +40,12 @@ pipeline {
         }
 	stage('Deploy') {
 	   when{
-	      branch 'master'
+	      anyOf { branch 'master'; branch 'main' }
 	   }
            steps {
                // Copies packages straight into your VM's Production environment path
                 sh 'mkdir -p /var/jenkins_home/production-deploy'
-                sh 'cp sbdl.zip log4j.properties sbdl_main.py sbdl_submit.sh conf /var/jenkins_home/production-deploy/'
+                sh 'cp -r sbdl.zip log4j.properties sbdl_main.py sbdl_submit.sh conf /var/jenkins_home/production-deploy/'
                 echo 'Project successfully deployed to the production-ready directory!'
                // sh "scp -i /home/prashant/cred/edge-node_key.pem -o 'StrictHostKeyChecking no' -r sbdl.zip log4j.properties sbdl_main.py sbdl_submit.sh conf prashant@40.117.123.105:/home/prashant/sbdl-prod"
            }
